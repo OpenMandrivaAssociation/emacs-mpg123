@@ -1,7 +1,7 @@
 %define rname mpg123
 %define name emacs-%{rname}
 %define version 1.24
-%define release 7mdk
+%define release  %mkrel 7
 
 %define flavor emacs xemacs
 
