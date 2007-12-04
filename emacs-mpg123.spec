@@ -5,7 +5,7 @@
 
 %define flavor emacs xemacs
 
-Summary: A front-end program to mpg123 under Emacs/XEmacs.
+Summary: A front-end program to mpg123 under Emacs/XEmacs
 Name: %{name}
 Version: %{version}
 Release: %{release}
