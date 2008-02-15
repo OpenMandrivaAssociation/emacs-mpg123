@@ -1,33 +1,30 @@
 %define rname mpg123
-%define name emacs-%{rname}
-%define version 1.24
-%define release  %mkrel 7
 
 %define flavor emacs xemacs
 
-Summary: A front-end program to mpg123 under Emacs/XEmacs
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: http://www.gentei.org/~yuuji/software/mpg123el/%{rname}.el.bz2
-Source1: %{name}-autostart.el
-License: GPL
-Group: Editors
-BuildRoot: %{_tmppath}/%{name}-buildroot
-Prefix: %{_prefix}
-BuildRequires: %{flavor}
-BuildRequires: perl
-BuildRequires: emacs-bin
-Requires: %{rname}
-BuildArch: noarch
-URL: http://www.gentei.org/~yuuji/software/mpg123el/
+Summary:	A front-end program to mpg123 under Emacs/XEmacs
+Name:		emacs-%{rname}
+Version:	1.50
+Release:	%mkrel 1
+Source0:	http://www.gentei.org/~yuuji/software/mpg123el/%{rname}.el
+Source1:	%{name}-autostart.el
+License:	Freeware
+Group:		Editors
+BuildRoot:	%{_tmppath}/%{name}-buildroot
+BuildRequires:	%{flavor}
+BuildRequires:	perl
+BuildRequires:	emacs-bin
+Requires:	%{rname}
+BuildArch:	noarch
+URL:		http://www.gentei.org/~yuuji/software/mpg123el/
 
 %description
 A front-end program to mpg123 under Emacs/XEmacs.
 
 %prep
-%setup -T -c %{name}-%{version}
-bzcat %{SOURCE0} > %{rname}.el
+iconv -f EUC-JP -t UTF-8 %{SOURCE0} > %{rname}.el
+sed -i -e 's,euc-jp,utf-8,g' %{rname}.el
+#install -m 644 %{SOURCE0} %{rname}.el
 
 %build
 for i in %{flavor};do
@@ -39,7 +36,7 @@ done
 perl -n -e 'last if /^\(/;last if /^;;; Code/; print' < %{SOURCE0} > DOCUMENTATION
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 for i in %{flavor};do
 install -D -m644 $i-%{rname}.elc %{buildroot}%{_datadir}/$i/site-lisp/$i-%{rname}.elc
@@ -53,7 +50,7 @@ EOF
 
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
