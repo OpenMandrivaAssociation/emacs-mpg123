@@ -5,7 +5,7 @@
 Summary:	A front-end program to mpg123 under Emacs/XEmacs
 Name:		emacs-%{rname}
 Version:	1.50
-Release:	4
+Release:	5
 Source0:	http://www.gentei.org/~yuuji/software/mpg123el/%{rname}.el
 Source1:	%{name}-autostart.el
 License:	Freeware
