@@ -10,7 +10,6 @@ Source0:	http://www.gentei.org/~yuuji/software/mpg123el/%{rname}.el
 Source1:	%{name}-autostart.el
 License:	Freeware
 Group:		Editors
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	%{flavor}
 BuildRequires:	perl
 BuildRequires:	emacs-bin
@@ -48,9 +47,6 @@ cat << EOF > %buildroot%{_sysconfdir}/emacs/site-start.d/%{name}.el
 %{expand:%(%__cat %{SOURCE1})}
 EOF
 
-
-%clean
-rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
