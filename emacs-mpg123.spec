@@ -15,7 +15,7 @@ BuildRequires:	perl
 BuildRequires:	emacs-bin
 Requires:	%{rname}
 BuildArch:	noarch
-URL:		http://www.gentei.org/~yuuji/software/mpg123el/
+URL:		https://www.gentei.org/~yuuji/software/mpg123el/
 
 %description
 A front-end program to mpg123 under Emacs/XEmacs.
